@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var counter = 0
+    @Environment(AppState.self)
+    private var appState
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Counter: \(counter)")
-                .font(.title)
-            Button("Increase") {
-                counter += 1
+        Group {
+            if appState.isAuthenticated {
+                Text("Home")
+                    .font(.largeTitle)
+            } else {
+                Text("Login")
+                    .font(.largeTitle)
             }
         }
-        .padding()
     }
 }
 

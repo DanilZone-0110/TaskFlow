@@ -17,8 +17,9 @@ struct RootView: View {
                 Text("Home")
                     .font(.largeTitle)
             } else {
-                Text("Login")
-                    .font(.largeTitle)
+                LoginView {
+                    appState.isAuthenticated = true
+                }
             }
         }
     }

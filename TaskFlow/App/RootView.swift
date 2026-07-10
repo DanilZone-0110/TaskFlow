@@ -11,13 +11,16 @@ struct RootView: View {
     @Environment(AppState.self)
     private var appState
     
+    @Environment(DependencyContainer.self)
+    private var dependencies
+    
     var body: some View {
         Group {
             if appState.isAuthenticated {
                 Text("Home")
                     .font(.largeTitle)
             } else {
-                LoginView {
+                LoginView(authenticationService: dependencies.authenticationService) {
                     appState.isAuthenticated = true
                 }
             }

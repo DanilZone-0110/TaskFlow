@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CD64C0C23000ABBA0034C8A1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CD64C0C13000ABBA0034C8A1 /* FirebaseAuth */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CD10AF982FF7286700F8E9B9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD64C0C23000ABBA0034C8A1 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = TaskFlow;
 			packageProductDependencies = (
+				CD64C0C13000ABBA0034C8A1 /* FirebaseAuth */,
 			);
 			productName = TaskFlow;
 			productReference = CD10AF8A2FF7286500F8E9B9 /* TaskFlow.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = CD10AF812FF7286500F8E9B9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CD64C0C03000ABBA0034C8A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD10AF8B2FF7286500F8E9B9 /* Products */;
 			projectDirPath = "";
@@ -578,6 +587,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD64C0C03000ABBA0034C8A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.16.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD64C0C13000ABBA0034C8A1 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD64C0C03000ABBA0034C8A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD10AF822FF7286500F8E9B9 /* Project object */;
 }

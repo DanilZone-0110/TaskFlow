@@ -13,10 +13,11 @@ struct LoginView: View {
         viewModel.state == .loading
     }
     
-    init(onLoginSuccess: @escaping () -> Void) {
+    init(authenticationService: AuthenticationService,
+         onLoginSuccess: @escaping () -> Void) {
         self._viewModel = State(
             initialValue: LoginViewModel(
-                authenticationService: MockAuthenticationService(),
+                authenticationService: authenticationService,
                 onLoginSuccess: onLoginSuccess
             )
         )
@@ -56,7 +57,7 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView{
+    LoginView(authenticationService: MockAuthenticationService()) {
         print("Login success")
     }
 }

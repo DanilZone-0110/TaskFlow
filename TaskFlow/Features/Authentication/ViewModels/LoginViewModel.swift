@@ -17,9 +17,12 @@ final class LoginViewModel {
         !email.isEmpty &&
         !password.isEmpty
     }
+    
+    private let authenticationService: AuthenticationService
     private let onLoginSuccess: () -> Void
     
-    init(onLoginSuccess: @escaping () -> Void) {
+    init(authenticationService: AuthenticationService, onLoginSuccess: @escaping () -> Void) {
+        self.authenticationService = authenticationService
         self.onLoginSuccess = onLoginSuccess
     }
     
@@ -30,12 +33,13 @@ final class LoginViewModel {
         
         state = .loading
         
-        try? await Task.sleep(
-            for: .seconds(2)
-        )
-        
-        state = .success
-        
-        onLoginSuccess()
+        do {
+            try await authenticationService.login(email: email, password: password)
+            
+            state = .success
+            onLoginSuccess()
+        } catch {
+            state = .failure(error.localizedDescription)
+        }
     }
 }

@@ -14,7 +14,12 @@ struct LoginView: View {
     }
     
     init(onLoginSuccess: @escaping () -> Void) {
-        self._viewModel = State(initialValue: LoginViewModel(onLoginSuccess: onLoginSuccess))
+        self._viewModel = State(
+            initialValue: LoginViewModel(
+                authenticationService: MockAuthenticationService(),
+                onLoginSuccess: onLoginSuccess
+            )
+        )
     }
     
     var body: some View {

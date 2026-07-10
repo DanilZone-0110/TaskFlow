@@ -13,7 +13,7 @@ import Testing
 struct LoginViewModelTests {
     @Test
     func initialStateIsIdle() {
-        let viewModel = LoginViewModel {
+        let viewModel = LoginViewModel(authenticationService: MockAuthenticationService()) {
             
         }
         
@@ -24,7 +24,7 @@ struct LoginViewModelTests {
     
     @Test
     func emptyCredentialsAreInvalid() {
-        let viewModel = LoginViewModel {
+        let viewModel = LoginViewModel(authenticationService: MockAuthenticationService()) {
             
         }
         
@@ -35,7 +35,7 @@ struct LoginViewModelTests {
     
     @Test
     func validCredentialsIsEnableForm() {
-        let viewModel = LoginViewModel {
+        let viewModel = LoginViewModel(authenticationService: MockAuthenticationService()) {
             
         }
         
@@ -50,7 +50,7 @@ struct LoginViewModelTests {
     @Test
     func successfulLoginChangesState() async {
         var successCalled = false
-        let viewModel = LoginViewModel {
+        let viewModel = LoginViewModel(authenticationService: MockAuthenticationService()) {
             successCalled = true
         }
         

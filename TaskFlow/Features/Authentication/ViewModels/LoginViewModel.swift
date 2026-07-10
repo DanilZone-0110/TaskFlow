@@ -38,8 +38,10 @@ final class LoginViewModel {
             
             state = .success
             onLoginSuccess()
+        } catch let error as AuthenticationError {
+            state = .failure(error.message)
         } catch {
-            state = .failure(error.localizedDescription)
+            state = .failure(AuthenticationError.unknown.message)
         }
     }
 }

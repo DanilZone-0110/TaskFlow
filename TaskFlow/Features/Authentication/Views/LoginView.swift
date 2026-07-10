@@ -9,8 +9,18 @@ import SwiftUI
 
 struct LoginView: View {
     @State private var viewModel: LoginViewModel
+    @State private var showError: Bool = false
+    
     private var isLoading: Bool {
         viewModel.state == .loading
+    }
+    
+    private var errorMessage: String {
+        if case let .failure(message) = viewModel.state {
+            return message
+        }
+        
+        return ""
     }
     
     init(authenticationService: AuthenticationService,
@@ -53,6 +63,19 @@ struct LoginView: View {
             )
         }
         .padding()
+        .onChange(of: viewModel.state) {
+            _, newValue in
+            if case .failure = newValue {
+                showError = true
+            }
+        }
+        .alert("Error", isPresented: $showError) {
+            Button("OK") {
+                
+            }
+        } message: {
+            Text(errorMessage)
+        }
     }
 }
 
